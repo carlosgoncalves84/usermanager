@@ -39,7 +39,7 @@ class UserManagerCommand extends Command
     protected function configure():void
     {
         $this
-            ->setDescription('User CRUD')
+            ->setDescription('CRUD functionality for user Entity')
             ->setHelp('This command allows you to create, find, modify and delete a user');
     }
 
@@ -104,54 +104,13 @@ class UserManagerCommand extends Command
      */
     private  function createUser(InputInterface $input, OutputInterface $output): void
     {
-        $question1 = new Question('Enter user name: ', false);
-        $question1->setNormalizer(function ($name) {
-            return $name ? trim($name) : '';
-        });
-        $question1->setValidator(function ($name) {
-            if (preg_match('/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/',$name) || !preg_match('/.+/', $name)) {
-                throw new \RuntimeException(
-                    'This name is not valid.'
-                );
-            }
+        $nameQuestion = new Question('Enter new User name: ', false);
+        $passwordQuestion = new Question('Enter new password: ', false);
 
-            $user = $this->userManager->getUserRepository()->countUsersByName($name);
+        $name = $this->askName($input, $output, $nameQuestion);
+        $password = $this->askPassword($input, $output, $passwordQuestion);
 
-            if ($user > 0) {
-                throw new \RuntimeException(
-                    'This name already exists.'
-                );
-            }
-
-            return $name;
-        });
-        $question1->setMaxAttempts(3);
-        $helper1 = $this->getHelper('question');
-        $name = $helper1->ask($input, $output, $question1);
-
-        $question2 = new Question('Enter password: ', false);
-        $question2->setHidden(true);
-        $question2->setHiddenFallback(false);
-        $question2->setValidator(function ($password) {
-
-            $newHash = sha1($password);
-            $check = $this->userManager->checkPassword($password, $newHash);
-
-            if (!$check) {
-                throw new \RuntimeException('Your password is weak.');
-            }
-
-            if (is_string($check)) {
-                throw new \RuntimeException($check);
-            }
-
-            return $newHash;
-        });
-        $question2->setMaxAttempts(3);
-        $helper2 = $this->getHelper('question');
-        $hashedPass = $helper2->ask($input, $output, $question2);
-
-        $result = $this->userManager->create($name, $hashedPass);
+        $result = $this->userManager->create($name, $password);
 
         $this->getFinalOutput($output, $result, 'Created');
     }
@@ -162,22 +121,9 @@ class UserManagerCommand extends Command
      */
     private function queryUser(InputInterface $input, OutputInterface $output): void
     {
-        $question = new Question('Enter user name: ', false);
-        $question->setNormalizer(function ($name) {
-            return $name ? trim($name) : '';
-        });
-        $question->setValidator(function ($name) {
-            if (preg_match('/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/',$name) || !preg_match('/.+/', $name)) {
-                throw new \RuntimeException(
-                    'This name is not valid.'
-                );
-            }
+        $nameQuestion = new Question('Enter User name: ', false);
 
-            return $name;
-        });
-        $question->setMaxAttempts(3);
-        $helper = $this->getHelper('question');
-        $name = $helper->ask($input, $output, $question);
+        $name = $this->askName($input, $output, $nameQuestion, false);
 
         $result = $this->userManager->query($name);
 
@@ -192,52 +138,85 @@ class UserManagerCommand extends Command
      */
     private function modifyUser(InputInterface $input, OutputInterface $output): void
     {
-        $question0 = new Question('Enter user name: ', false);
-        $question0->setNormalizer(function ($name) {
+        $nameQuestion = new Question('Enter User name: ', false);
+        $newNameQuestion = new Question('Enter new User name: ', false);
+        $newPasswordQuestion = new Question('Enter new password: ', false);
+
+        $name = $this->askName($input, $output, $nameQuestion, false);
+        $newName = $this->askName($input, $output, $newNameQuestion);
+        $newPassword = $this->askPassword($input, $output, $newPasswordQuestion);
+
+        $result = $this->userManager->update($name, $newName, $newPassword);
+
+        $this->getFinalOutput($output, $result, 'Updated');
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    private function deleteUser(InputInterface $input, OutputInterface $output): void
+    {
+        $question = new Question('Enter User name: ', false);
+
+        $name = $this->askName($input, $output, $question, false);
+
+        $result = $this->userManager->delete($name);
+
+        $this->getFinalOutput($output, $result);
+    }
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param Question $question
+     * @param bool $default
+     * @return mixed
+     */
+    private function askName(InputInterface $input, OutputInterface $output, Question $question, $default = true)
+    {
+        $question->setNormalizer(function ($name) {
             return $name ? trim($name) : '';
         });
-        $question0->setValidator(function ($name) {
+        $question->setValidator(function ($name) use($default) {
             if (preg_match('/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/',$name) || !preg_match('/.+/', $name)) {
                 throw new \RuntimeException(
                     'This name is not valid.'
                 );
             }
 
+            if($default) {
+                $user = $this->userManager->getUserRepository()->countUsersByName($name);
+
+                if ($user > 0) {
+                    throw new \RuntimeException(
+                        'This name already exists.'
+                    );
+                }
+            }
+
             return $name;
         });
-        $question0->setMaxAttempts(3);
-        $helper0 = $this->getHelper('question');
-        $name = $helper0->ask($input, $output, $question0);
+        $question->setMaxAttempts(3);
+        $helper = $this->getHelper('question');
 
-        $question1 = new Question('Enter new user name: ', false);
-        $question1->setNormalizer(function ($newName) {
-            return $newName ? trim($newName) : '';
-        });
-        $question1->setValidator(function ($newName) {
-            if (preg_match('/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/',$newName) || !preg_match('/.+/', $newName)) {
-                throw new \RuntimeException(
-                    'This name is not valid.'
-                );
-            }
+        return $helper->ask($input, $output, $question);
 
-            $user = $this->userManager->getUserRepository()->countUsersByName($newName);
+    }
 
-            if ($user > 1) {
-                throw new \RuntimeException(
-                    'This name already exists.'
-                );
-            }
-
-            return $newName;
-        });
-        $question1->setMaxAttempts(3);
-        $helper1 = $this->getHelper('question');
-        $newName = $helper1->ask($input, $output, $question1);
-
-        $question2 = new Question('Enter new password: ', false);
-        $question2->setHidden(true);
-        $question2->setHiddenFallback(false);
-        $question2->setValidator(function ($password) {
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param Question $question
+     * @return mixed
+     */
+    private function askPassword(InputInterface $input, OutputInterface $output, Question $question)
+    {
+        $question->setHidden(true);
+        $question->setHiddenFallback(false);
+        $question->setValidator(function ($password) {
 
             $newHash = sha1($password);
             $check = $this->userManager->checkPassword($password, $newHash);
@@ -252,43 +231,10 @@ class UserManagerCommand extends Command
 
             return $newHash;
         });
-        $question2->setMaxAttempts(3);
-        $helper2 = $this->getHelper('question');
-        $hashedPass = $helper2->ask($input, $output, $question2);
-
-        $result = $this->userManager->update($name, $newName, $hashedPass);
-
-        $this->getFinalOutput($output, $result, 'Updated');
-    }
-
-    /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    private function deleteUser(InputInterface $input, OutputInterface $output): void
-    {
-        $question = new Question('Enter user name: ', false);
-        $question->setNormalizer(function ($name) {
-            return $name ? trim($name) : '';
-        });
-        $question->setValidator(function ($name) {
-            if (preg_match('/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/',$name) || !preg_match('/.+/', $name)) {
-                throw new \RuntimeException(
-                    'This name is not valid.'
-                );
-            }
-
-            return $name;
-        });
         $question->setMaxAttempts(3);
         $helper = $this->getHelper('question');
-        $name = $helper->ask($input, $output, $question);
 
-        $result = $this->userManager->delete($name);
-
-        $this->getFinalOutput($output, $result);
+        return $helper->ask($input, $output, $question);
     }
 
     /**

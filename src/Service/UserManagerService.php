@@ -94,7 +94,7 @@ class UserManagerService
 
                 $this->entityManager->flush();
 
-                return $user;
+                return 'User Updated';
             }
 
             return 'User not Found';

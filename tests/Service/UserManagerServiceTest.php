@@ -73,9 +73,10 @@ class UserManagerServiceTest extends TestCase
     {
         $this->findOneByNameMock(new User);
 
-        $user = $this->instance->update('chipreu', 'cabritao','tchondicafe');
+        $result = $this->instance->update('chipreu', 'cabritao','tchondicafe');
 
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertEquals('User Updated', $result);
+
     }
 
     /**
