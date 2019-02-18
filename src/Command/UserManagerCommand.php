@@ -22,7 +22,7 @@ class UserManagerCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'app:create-user';
+    protected static $defaultName = 'app:user-manager';
 
     /**
      * @var UserManagerService $userManager
@@ -304,7 +304,7 @@ class UserManagerCommand extends Command
 
         $output->writeln([$result, '',]);
 
-        $input = new ArrayInput(['command' => 'app:create-user']);
+        $input = new ArrayInput(['command' => 'app:user-manager']);
 
         try {
             $this->getApplication()->run($input, $output);
