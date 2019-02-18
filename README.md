@@ -1,7 +1,7 @@
 # usermanager
 Symfony 4 - UserManager - Console - App with CRUD functionality
 
-#Installation Steps:
+Installation Steps:
 
 1.Clone Repo
 
