@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d52ed38f-44bf-4d10-abdf-d1e311c8eabb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.phpunit.result.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.phpunit.result.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Command/UserManagerCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/UserManagerCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/UserManagerService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UserManagerService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Service/UserManagerServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Service/UserManagerServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +38,7 @@
       <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Repository/UserRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2575">
+            <state relative-caret-position="2650">
               <caret line="106" column="40" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="40" />
               <folding>
                 <element signature="e#34#54#0#PHP" expanded="true" />
@@ -53,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/src/Service/UserManagerService.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="698">
-              <caret line="96" column="41" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="41" />
+              <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
               <folding>
                 <element signature="e#31#51#0#PHP" expanded="true" />
               </folding>
@@ -64,7 +62,7 @@
       <file leaf-file-name="UserManagerServiceTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Service/UserManagerServiceTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
+            <state relative-caret-position="-1006">
               <caret line="77" column="34" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
               <folding>
                 <element signature="e#37#57#0#PHP" expanded="true" />
@@ -73,7 +71,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserManagerCommand.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="650">
+              <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserManagerCommand.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Command/UserManagerCommand.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="448">
@@ -118,8 +125,9 @@
         <option value="$PROJECT_DIR$/tests/Service/UserManagerTest.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Command/UserManagerCommand.php" />
-        <option value="$PROJECT_DIR$/src/Service/UserManagerService.php" />
         <option value="$PROJECT_DIR$/tests/Service/UserManagerServiceTest.php" />
+        <option value="$PROJECT_DIR$/src/Service/UserManagerService.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -285,22 +293,6 @@
               <item name="usermanager" type="b2602c69:ProjectViewProjectNode" />
               <item name="usermanager" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="usermanager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="usermanager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="usermanager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="usermanager" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="usermanager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="usermanager" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -352,12 +344,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550323261957</updated>
       <workItem from="1550323264612" duration="57814000" />
-      <workItem from="1550490380837" duration="4652000" />
+      <workItem from="1550490380837" duration="5891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62466000" />
+    <option name="totallyTimeSpent" value="63705000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-4" width="1920" height="1204" extended-state="6" />
@@ -419,7 +411,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/var/cache/dev/ContainerAeR1QSO/getConsole_CommandLoaderService.php" />
     <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Input/Input.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -689,27 +680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2575">
-          <caret line="106" column="40" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="40" />
-          <folding>
-            <element signature="e#34#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -720,20 +694,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Service/UserManagerServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="77" column="34" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
-          <folding>
-            <element signature="e#37#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/UserManagerService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="698">
-          <caret line="96" column="41" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="41" />
+          <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
           <folding>
             <element signature="e#31#51#0#PHP" expanded="true" />
           </folding>
@@ -747,6 +711,40 @@
           <folding>
             <element signature="e#31#51#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2650">
+          <caret line="106" column="40" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="40" />
+          <folding>
+            <element signature="e#34#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Service/UserManagerServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1006">
+          <caret line="77" column="34" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
+          <folding>
+            <element signature="e#37#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
         </state>
       </provider>
     </entry>
