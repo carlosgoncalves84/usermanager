@@ -10,5 +10,7 @@ namespace App\Command;
  */
 class QueryUserCommand
 {
-
+//        // Query User
+//        $resultQuery = $this->userManager->query($name);
+//
 }

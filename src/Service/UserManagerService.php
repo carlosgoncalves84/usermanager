@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use GuzzleHttp\Client;
@@ -11,11 +12,11 @@ use GuzzleHttp\Exception\GuzzleException;
 
 
 /**
- * Class UserManager
+ * Class UserManagerService
  * @package App\Service
  * @author carlos <carlos.santos.goncalves@websitebutler.de>
  */
-class UserManager
+class UserManagerService
 {
     /**
      * @var EntityManagerInterface $entityManager
@@ -31,6 +32,8 @@ class UserManager
      * @param $name
      * @param $password
      * @return User|string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function create($name, $password)
     {
@@ -71,6 +74,8 @@ class UserManager
      * @param null $newName
      * @param null $newPassword
      * @return User|null|string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function update($name = null, $newName = null , $newPassword = null)
     {
@@ -103,6 +108,8 @@ class UserManager
     /**
      * @param $name
      * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function delete($name): string
     {

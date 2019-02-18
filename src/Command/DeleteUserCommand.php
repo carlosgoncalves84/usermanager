@@ -10,5 +10,6 @@ namespace App\Command;
  */
 class DeleteUserCommand
 {
-
+//        // Delete User
+//        $resultDelete = $this->userManager->delete($name);
 }
