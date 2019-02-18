@@ -12,3 +12,6 @@ Installation Steps:
 4.Create DB Table with command: php bin/console doctrine:schema:create  
 
 5.Run UserManagerApp with command: bin/console app:manage-user
+
+
+Run tests with command: ./vendor/bin/phpunit --no-coverage tests/Service/UserManagerServiceTest.php
