@@ -1,12 +1,14 @@
 # usermanager
 Symfony 4 - UserManager - Console - App with CRUD functionality
 
-Clone Repo
+#Installation Steps:
 
-Run composer install
+1.Clone Repo
 
-Create database with commmand: php bin/console doctrine:database:create
+2.Run composer install
 
-Create DB Table with command: php bin/console doctrine:schema:create  
+3.Create database with commmand: php bin/console doctrine:database:create
 
-Run UserManagerApp with command: bin/console app:manage-user
+4.Create DB Table with command: php bin/console doctrine:schema:create  
+
+5.Run UserManagerApp with command: bin/console app:manage-user
