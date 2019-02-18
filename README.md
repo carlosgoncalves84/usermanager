@@ -1,5 +1,5 @@
 # usermanager
-Symfony - UserManager with CRUD functionality
+Symfony - UserManager-Console-App with CRUD functionality
 
 Clone Repo
 
